@@ -1,36 +1,123 @@
 ## 📊 Data Modeling
 
 ### 1. Entity Relationship Diagram (ERD)
-The original source data consists of the following relational entities:
-* **Orders**: General transaction headers.
-* **Order Items**: Line-level details for each order.
-* **Customers**: Demographic information of buyers.
-* **Products**: Catalog details and pricing.
-* **Product Reviews**: Customer feedback and ratings.
+
+The original dataset was structured as a normalized transactional system (OLTP), consisting of multiple related entities:
+
+- **Orders**: Contains high-level transaction details (order date, customer, payment, etc.)
+- **Order Items**: Represents line-level transactional data (products, quantity, price)
+- **Customers**: Customer demographic and identification data
+- **Products**: Product catalog and attributes
+- **Product Reviews**: Customer ratings and feedback
+
+While this structure is optimal for transactional systems, it is not suitable for analytical workloads due to heavy joins and complex relationships.
 
 ---
 
-### 2. Data Transformation (ETL)
-In this phase, I performed a strategic merge to create the central **Fact Table**:
+### 2. Data Transformation (ETL Logic)
 
-* **Grain Level Alignment**: I merged the `Order Items` and `Orders` tables.
-* **Join Logic**: I initiated the merge starting with the **Order Items** table because it represents the **lowest grain** (transactional line-item level). This ensures that no granular data is lost and that every individual product sold is accounted for in the final dataset.
-* **Result**: This process created the `All_Order_Table`, which serves as the primary Fact table containing both transactional metrics and foreign keys for the dimensions.
+To enable efficient analysis, the data was transformed into a centralized fact table.
+
+#### 🔹 Grain Definition
+The analytical grain was defined at the **order-item level**, meaning:
+> Each row represents a single product within an order.
+
+#### 🔹 Merge Strategy
+
+- The transformation process starts from the **Order Items** table because it represents the **lowest level of granularity**
+- The **Orders** table is then joined to enrich transactional context (date, customer, payment method)
+
+#### 🔹 Why This Approach?
+
+- Preserves all transactional details (no data loss)
+- Handles the **one-to-many relationship** between Orders and Order Items correctly
+- Ensures accurate aggregation for metrics such as Revenue and Quantity
+
+#### 🔹 Result
+
+This process produced the central fact table:
+
+- **All_Order_Table**
+  - Contains transactional metrics (Quantity, Price, Revenue)
+  - Includes foreign keys to all dimension tables
 
 ---
 
 ### 3. Star Schema Architecture
-The final data model is optimized into a **Star Schema** for efficient querying and reporting in Power BI:
 
-#### **Fact Tables**
-* `All_Order_Table`: Sales metrics, quantities, and prices.
-* `Product_Review`: Feedback scores and sentiments.
+The final model was redesigned into a **Star Schema** to optimize performance and usability in Power BI.
 
-#### **Dimension Tables**
-* `Dim_Customer`: Contains customer attributes.
-* `Dim_Product`: Contains product categories and names.
-* `Dim_Shipping_Country`: Unique list of shipping locations.
-* `Dim_Payment_Method`: Unique list of payment types used.
+#### 🧾 Fact Tables
 
-> **Why this matters:**
-> By using the **Order Items** as the base for the merge, I handled the **one-to-many relationship** correctly. Since one order can contain multiple items, starting with the lowest grain ensures all individual product details are preserved for accurate analysis.
+- **All_Order_Table**
+  - Core transactional table
+  - Contains measures such as Quantity, Price, and Revenue
+
+- **Product_Review**
+  - Stores customer feedback and ratings
+  - Linked using **Product_ID**
+  - Modeled as a separate fact table to support rating and sentiment analysis
+
+---
+
+#### 📊 Dimension Tables
+
+- **Dim_Customer**
+- **Dim_Product**
+- **Dim_Date** *(created in Power BI and linked to Order Date)*
+- **Dim_Shipping_Country**
+- **Dim_Payment_Method**
+
+---
+
+### 4. Performance Optimization & Design Decisions
+
+To improve performance and follow best practices in dimensional modeling:
+
+#### 🔹 Surrogate Keys & Indexing
+
+- Created indexed columns in the fact table for:
+  - **Country**
+  - **Payment Method**
+
+- Replaced text-based fields with dimension keys by creating:
+  - `Dim_Shipping_Country`
+  - `Dim_Payment_Method`
+
+#### 🔹 Why This Matters
+
+- Reduces storage size in the fact table
+- Improves join performance in Power BI
+- Enables efficient filtering and slicing
+- Aligns with **Star Schema best practices**
+
+---
+
+### 5. Time Intelligence Handling
+
+- A dedicated **Dim_Date** table was created directly in Power BI
+- Linked to the **Order Date** column in the fact table
+- Enables:
+  - Time-based aggregations (MoM, YoY)
+  - Trend analysis
+  - Seasonal insights
+
+---
+
+### 6. Design Considerations
+
+- **Performance Optimization**: Reduced need for complex joins
+- **Scalability**: Supports large datasets (20M+ rows)
+- **Flexibility**: Enables slicing across multiple dimensions
+- **Analytical Efficiency**: Simplifies DAX calculations
+
+---
+
+### 7. Key Takeaway
+
+> Starting from the lowest grain (**Order Items**) and applying dimensional modeling techniques (indexing, surrogate keys, star schema design) ensured:
+> - Accurate aggregation  
+> - High performance  
+> - Scalable analytics  
+
+This approach follows industry best practices in data warehousing and BI modeling.
