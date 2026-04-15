@@ -10,15 +10,12 @@ The goal of this project is to transform a complex OLTP (Online Transactional Pr
 
 ## 🔎 Explore the Project
 
-You can navigate through different parts of the project:
-
-- 📊 **[Dashboard Preview](images/dashboard.png)** → View Power BI dashboard visuals  
-- 🧱 **[Data Modeling & ERD](docs/data_modeling.md)** → Detailed explanation of ERD to Star Schema transformation  
-- 🧠 **[ETL Pipeline (Python Code)](src/etl.py)** → Full Python implementation for data transformation  
-- 📁 **[Power BI File](powerbi/dashboard.pbix)** → Open the interactive dashboard  
-- 📂 **[Documentation](docs/)** → Full technical documentation  
-- 📦 **[Data Source](https://www.kaggle.com/datasets/naelaqel/synthetic-e-commerce-relational-dataset/data)** → Access raw dataset files
-
+- 📊 **[Dashboard](powerbi/dashboard.pbix)** → Open Power BI file  
+- 🧱 **[Data Modeling Docs](docs/data_modeling.md)** → Detailed explanation of ERD to Star Schema  
+- 🧠 **[ETL Pipeline](src/etl.py)** → Python transformation code (ERD → Star Schema)  
+- 📂 **[Full Documentation](docs/)** → Full project explanation (Modeling + DAX + Analysis)  
+- 🖼️ **[Images & Visuals](images/)** → ERD, Star Schema, and Dashboard screenshots  
+- 📦 **[Raw Data](https://www.kaggle.com/datasets/naelaqel/synthetic-e-commerce-relational-dataset/data)** → Source dataset you can download
 
 ## 🎯 Objectives
 
@@ -188,9 +185,6 @@ End-to-End-Ecommerce-Data-Pipeline/
 ├── src/
 │   └── etl.py
 │
-├── notebooks/
-│   └── data_modeling.ipynb
-│
 ├── docs/
 │   └── data_modeling.md
 │
@@ -201,44 +195,6 @@ End-to-End-Ecommerce-Data-Pipeline/
 │
 └── README.md
 ```
-
----
-
-## ▶️ How to Run
-
-1. Run the ETL pipeline:
-
-```bash
-python src/etl.py
-```
-
-2. Open Power BI dashboard:
-
-```
-powerbi/dashboard.pbix
-```
-
----
-
-## 📸 Dashboard Preview
-
-> Add screenshots of your dashboard in the `images/` folder and display them here.
-
-Example:
-
-```
-![Dashboard](images/dashboard.png)
-```
-
----
-
-## 📌 Future Improvements
-
-* Add incremental data loading
-* Implement data validation checks
-* Optimize performance using SQL-based pipelines
-* Deploy dashboard to Power BI Service
-
 ---
 
 ## 👤 Author
@@ -248,7 +204,7 @@ This project was built as a portfolio case study to demonstrate:
 * Data Engineering skills
 * Data Modeling expertise
 * Business Intelligence capabilities
-* End-to-End analytics pipeline development
+* End-to-End alytics pipeline developmentan
 
 ---
 
