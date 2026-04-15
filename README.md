@@ -1,4 +1,4 @@
-# 📊 End-to-End Ecommerce Data Engineering & Analytics Pipeline
+# 📊 End-to-End E-Commerce Project Data Engineering & Analytics Pipeline
 
 ## 🧠 Project Overview
 
