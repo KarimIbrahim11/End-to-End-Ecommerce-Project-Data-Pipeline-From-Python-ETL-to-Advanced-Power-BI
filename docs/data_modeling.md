@@ -43,9 +43,9 @@ This process produced the central fact table:
 
 ---
 
-### 3. Star Schema Architecture
+### 3. Star Schema Architecture (Extended to Constellation Schema)
 
-The final model was redesigned into a **Star Schema** to optimize performance and usability in Power BI.
+The final model was redesigned into a **Star Schema**, extended into a **Constellation Schema (Multi-Fact Model)** to support integrated analysis across multiple fact tables.
 
 #### 🧾 Fact Tables
 
@@ -55,8 +55,8 @@ The final model was redesigned into a **Star Schema** to optimize performance an
 
 - **Product_Review**
   - Stores customer feedback and ratings
-  - Linked using **Product_ID**
-  - Modeled as a separate fact table to support rating and sentiment analysis
+  - Linked to shared dimensions (e.g., **Product_ID**)
+  - Modeled as a separate fact table to enable integrated analysis between sales performance and customer satisfaction
 
 ---
 
