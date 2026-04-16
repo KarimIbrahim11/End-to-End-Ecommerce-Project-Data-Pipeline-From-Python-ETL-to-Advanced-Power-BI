@@ -77,7 +77,7 @@ The project follows a layered data architecture:
 
 This project demonstrates:
 
-- Data Modeling (Star Schema Design)  
+- Data Modeling designed the schema into a **Star Schema**, extended into a **Constellation Schema (Multi-Fact Model)**
 - ETL Pipeline Development using Python  
 - Performance optimization techniques  
 - Advanced Power BI analytics  
