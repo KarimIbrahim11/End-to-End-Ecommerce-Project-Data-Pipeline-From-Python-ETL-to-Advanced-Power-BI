@@ -36,14 +36,16 @@ To address these challenges, I designed a complete data pipeline that includes:
 
 ### 🔹 Data Modeling
 
-- Redesigned the schema into a **Star Schema**  
+- Redesigned the schema into a **Star Schema**, extended into a **Constellation Schema (Multi-Fact Model)**  
 - Built a central **Fact Table** (`All_Order_Table`)  
+- Introduced an additional fact table (`Product_Review`) to support customer feedback analysis  
 - Created multiple **Dimension Tables** for slicing and filtering  
 
 #### Best Practices Applied:
 - Using lowest grain for fact table construction  
 - Creating dimension tables for categorical fields (Country, Payment Method)  
-- Optimizing relationships for performance  
+- Using surrogate keys to reduce redundancy and improve performance  
+- Optimizing relationships for efficient filtering and query execution    
 
 ---
 
