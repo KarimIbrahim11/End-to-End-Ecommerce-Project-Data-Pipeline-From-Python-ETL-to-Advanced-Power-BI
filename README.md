@@ -20,7 +20,7 @@ The goal of this project is to transform a complex OLTP (Online Transactional Pr
   High-level explanation of the problem, solution approach, and architecture  
 - 📊 **[DAX Measures](docs/dax_measures.md)**  
   Complete list of business metrics and KPIs with explanations  
-- 📈 **[Business Insights](docs/insights.md)**  
+- 📈 **[Business Insights](docs/Insights.md)**  
   Key insights, findings, and strategic recommendations derived from the dashboard  
 - 🧠 **[Python ETL Code](src/etl.py)**  
   Source code for transforming raw OLTP data into analytical model  
@@ -215,9 +215,18 @@ End-to-End-Ecommerce-Data-Pipeline/
 │   └── etl.py
 │
 ├── docs/
-│   └── data_modeling.md
+│   └── Insights.md
+    └── data_modeling.md
+    └── dax_measure.md
+    └── etl_process.md
+    └── overview.md
 │
 ├── images/
+    └── Customer and Purchasing Dashboard.png
+    └── Data Model.png
+    └── ERD.png
+    └── Executive Growth & Stratgic Trends dashboard.png
+    └── Sales-Rating Correlation Analysis & Product Quality Analytics Dashboard.png
 │
 ├── powerbi/
 │   └── dashboard.pbix
