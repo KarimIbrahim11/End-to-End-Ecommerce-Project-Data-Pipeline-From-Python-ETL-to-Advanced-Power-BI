@@ -10,12 +10,26 @@ The goal of this project is to transform a complex OLTP (Online Transactional Pr
 
 ## 🔎 Explore the Project
 
-- 📊 **[Dashboard](powerbi/dashboard.pbix)** → Open Power BI file  
-- 🧱 **[Data Modeling Docs](docs/data_modeling.md)** → Detailed explanation of ERD to Star Schema  
-- 🧠 **[ETL Pipeline](src/etl.py)** → Python transformation code (ERD → Star Schema)  
-- 📂 **[Full Documentation](docs/)** → Full project explanation (Modeling + DAX + Analysis)  
-- 🖼️ **[Images & Visuals](images/)** → ERD, Star Schema, and Dashboard screenshots  
-- 📦 **[Raw Data](https://www.kaggle.com/datasets/naelaqel/synthetic-e-commerce-relational-dataset/data)** → Source dataset you can download
+- 📊 **[Power BI Dashboard](powerbi/dashboard.pbix)**  
+  Download and explore the interactive dashboard with KPIs, segmentation, and time intelligence analysis  
+- 🧱 **[Data Modeling](docs/data_modeling.md)**  
+  Detailed explanation of transforming ERD into a **Star Schema extended to a Constellation Schema (Multi-Fact Model)**  
+- ⚙️ **[ETL Process](docs/etl.md)**  
+  Step-by-step breakdown of the ETL pipeline (Extract, Transform, Load) using Python (Pandas)  
+- 🧠 **[Project Overview](docs/overview.md)**  
+  High-level explanation of the problem, solution approach, and architecture  
+- 📊 **[DAX Measures](docs/dax_measures.md)**  
+  Complete list of business metrics and KPIs with explanations  
+- 📈 **[Business Insights](docs/insights.md)**  
+  Key insights, findings, and strategic recommendations derived from the dashboard  
+- 🧠 **[Python ETL Code](src/etl.py)**  
+  Source code for transforming raw OLTP data into analytical model  
+- 📂 **[Full Documentation](docs/)**  
+  Complete project documentation (Modeling + ETL + DAX + Insights)  
+- 🖼️ **[Images & Visuals](images/)**  
+  ERD diagram, Data Model, and Dashboard screenshots  
+- 📦 **[Raw Dataset (Kaggle)](https://www.kaggle.com/datasets/naelaqel/synthetic-e-commerce-relational-dataset/data)**  
+  Original dataset used in the project  
 
 ## 🎯 Objectives
 
