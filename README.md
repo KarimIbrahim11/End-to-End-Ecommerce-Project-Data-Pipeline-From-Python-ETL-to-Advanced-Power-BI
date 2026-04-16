@@ -14,7 +14,7 @@ The goal of this project is to transform a complex OLTP (Online Transactional Pr
   Download and explore the interactive dashboard with KPIs, segmentation, and time intelligence analysis  
 - 🧱 **[Data Modeling](docs/data_modeling.md)**  
   Detailed explanation of transforming ERD into a **Star Schema extended to a Constellation Schema (Multi-Fact Model)**  
-- ⚙️ **[ETL Process](docs/etl.md)**  
+- ⚙️ **[ETL Process](docs/etl_process.md)**  
   Step-by-step breakdown of the ETL pipeline (Extract, Transform, Load) using Python (Pandas)  
 - 🧠 **[Project Overview](docs/overview.md)**  
   High-level explanation of the problem, solution approach, and architecture  
