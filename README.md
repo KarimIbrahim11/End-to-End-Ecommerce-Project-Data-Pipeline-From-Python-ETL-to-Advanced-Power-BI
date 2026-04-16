@@ -19,7 +19,7 @@ The goal of this project is to transform a complex OLTP (Online Transactional Pr
 
 ## 🎯 Objectives
 
-* Convert normalized ERD (OLTP) into Star Schema (OLAP)
+- Transform a normalized ERD (OLTP) into an optimized **Star Schema**, extended into a **Constellation Schema (Multi-Fact Model)** to support advanced analytics 
 * Build a scalable and efficient data model
 * Develop an ETL pipeline using Python
 * Enable advanced analytics using Power BI
@@ -43,18 +43,33 @@ These tables were originally highly normalized and optimized for transactional o
 
 ---
 
-### 🔹 Star Schema Design
+### 🔹 Data Model Design
 
-To support analytical workloads, the data model was redesigned into a Star Schema:
+To support analytical workloads, the data model was redesigned from a normalized ERD into a **Star Schema**, further extended into a **Constellation Schema (Multi-Fact Model)**.
 
-#### 🧾 Fact Table
+This approach enables efficient querying while allowing integrated analysis across multiple business domains.
 
-* **Fact_Sales**
+#### 🧾 Fact Tables
 
-  * Built by merging Orders + Order Items
-  * Includes calculated metrics (Total_amount)
- 
+* **All_Order_Table (Fact_Sales)**
+  - Built by merging `Orders` and `Order Items` at the lowest grain (order-item level)  
+  - Contains transactional metrics such as quantity, unit price, and total revenue  
+  - Serves as the primary fact table for sales analysis  
+
 * **Product_Review**
+  - Stores customer feedback and product ratings  
+  - Connected to shared dimensions (e.g., Product) to enable combined analysis between sales and customer satisfaction  
+
+#### 📊 Design Approach
+
+- The model follows a **multi-fact architecture** where:
+  - Fact tables share common dimensions (e.g., Product)  
+  - Some dimensions are specific to sales (e.g., Country, Payment Method)  
+
+- This design allows:
+  - Cross-analysis between sales performance and product reviews  
+  - Better scalability and flexibility in reporting  
+  - Improved query performance compared to the original OLTP structure  
 
 #### 📊 Dimension Tables
 
